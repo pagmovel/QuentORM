@@ -1,11 +1,11 @@
-# Guias do QuentORM - CASO DE USO
+# Guias do PyQuent - CASO DE USO
 
 ## 1. Criando um Novo Projeto
 
 ### 1.1 Comando Básico
 
 ```bash
-quentorm new nome_do_projeto
+pyquent new nome_do_projeto
 ```
 
 ### 1.2 Processo Interativo
@@ -39,7 +39,7 @@ O CLI irá guiar você através de um processo interativo:
    ```
    Deseja instalar as dependências do projeto? [S/n]
    ```
-   - Instala o QuentORM e suas dependências
+   - Instala o PyQuent e suas dependências
    - Configura o ambiente para desenvolvimento
 
 5. **Arquivos de Configuração**:
@@ -92,36 +92,36 @@ nome_do_projeto/
 ### 2.1 Comando Básico
 
 ```bash
-quentorm make:model NomeDoModelo
+pyquent make:model NomeDoModelo
 ```
 
 ### 2.2 Opções Disponíveis
 
 ```bash
 # Criar modelo com migração
-quentorm make:model NomeDoModelo --migration
+pyquent make:model NomeDoModelo --migration
 
 # Criar modelo com seeder
-quentorm make:model NomeDoModelo --seeder
+pyquent make:model NomeDoModelo --seeder
 
 # Criar modelo com controller
-quentorm make:model NomeDoModelo --controller
+pyquent make:model NomeDoModelo --controller
 
 # Criar modelo com todas as opções
-quentorm make:model NomeDoModelo --all
+pyquent make:model NomeDoModelo --all
 ```
 
 ### 2.3 Exemplo: Criando um Modelo de Usuário
 
 ```bash
-quentorm make:model User --migration
+pyquent make:model User --migration
 ```
 
 Isso criará:
 
 1. **Modelo** (`app/models/user.py`):
 ```python
-from quentorm import Model, Column
+from pyquent import Model, Column
 
 class User(Model):
     __tablename__ = 'users'
@@ -133,7 +133,7 @@ class User(Model):
 
 2. **Migração** (`database/migrations/YYYYMMDDHHMMSS_create_users_table.py`):
 ```python
-from quentorm import Migration
+from pyquent import Migration
 
 class CreateUsersTable(Migration):
     def up(self):

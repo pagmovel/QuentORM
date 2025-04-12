@@ -1,7 +1,7 @@
 {
     "cli": {
         "new": {
-            "welcome": "Bem-vindo ao assistente de criação de projetos PyQuent!",
+            "welcome": "Bem-vindo ao assistente de criação de projetos QuentORM!",
             "project_name": "Digite o nome do projeto:",
             "invalid_name": "Nome do projeto inválido. Use apenas letras, números e hífen.",
             "directory_exists": "O diretório já existe. Deseja sobrescrever? (S/n)",
@@ -27,10 +27,10 @@
             },
             "success": "Projeto criado com sucesso!",
             "next_steps": [
-                "1. Entre no diretório do projeto: cd nome-do-projeto",
-                "2. Configure o arquivo .env com suas credenciais",
-                "3. Execute as migrações: pyquent migrate",
-                "4. Inicie o desenvolvimento!"
+                "1. Configure o arquivo .env com suas credenciais",
+                "2. Execute as migrações: quentorm migrate",
+                "3. Inicie o servidor: quentorm serve",
+                "4. Acesse http://localhost:8000"
             ]
         }
     },
@@ -98,5 +98,38 @@
                 "invalid": "Tipo inválido. Deve ser 'entrada' ou 'saida'"
             }
         }
+    },
+    "welcome": "Bem-vindo ao assistente de criação de projetos QuentORM!",
+    "project_created": "Projeto criado com sucesso!",
+    "project_exists": "O projeto já existe. Deseja sobrescrever?",
+    "project_overwritten": "Projeto sobrescrito com sucesso!",
+    "project_cancelled": "Criação do projeto cancelada.",
+    "virtual_env_created": "Ambiente virtual criado com sucesso!",
+    "virtual_env_activated": "Ambiente virtual ativado com sucesso!",
+    "dependencies_installed": "Dependências instaladas com sucesso!",
+    "config_files_created": "Arquivos de configuração criados com sucesso!",
+    "git_initialized": "Repositório Git inicializado com sucesso!",
+    "model_created": "Modelo criado com sucesso!",
+    "migration_created": "Migração criada com sucesso!",
+    "seeder_created": "Seeder criado com sucesso!",
+    "controller_created": "Controller criado com sucesso!",
+    "next_steps": {
+        "1": "1. Configure o arquivo .env com suas credenciais",
+        "2": "2. Execute as migrações: quentorm migrate",
+        "3": "3. Inicie o servidor: quentorm serve",
+        "4": "4. Acesse http://localhost:8000"
+    },
+    "errors": {
+        "project_exists": "O projeto já existe. Use --force para sobrescrever.",
+        "invalid_name": "Nome do projeto inválido.",
+        "invalid_model": "Nome do modelo inválido.",
+        "invalid_migration": "Nome da migração inválido.",
+        "invalid_seeder": "Nome do seeder inválido.",
+        "invalid_controller": "Nome do controller inválido.",
+        "file_not_found": "Arquivo não encontrado.",
+        "permission_denied": "Permissão negada.",
+        "database_error": "Erro ao conectar ao banco de dados.",
+        "migration_error": "Erro ao executar migração.",
+        "seeder_error": "Erro ao executar seeder."
     }
 } 
