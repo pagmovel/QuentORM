@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "quentorm"
-version = "0.1.0"
+version = "0.1.01"
 description = "Um ORM elegante e poderoso para Python"
 authors = [
     {name = "Seu Nome", email = "seu.email@exemplo.com"}
