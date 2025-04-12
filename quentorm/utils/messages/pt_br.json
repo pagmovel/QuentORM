@@ -1,0 +1,43 @@
+{
+    "validations": {
+        "cpf": {
+            "invalid_length": "CPF deve ter 11 dígitos",
+            "all_same_digits": "CPF não pode ter todos os dígitos iguais",
+            "invalid_check_digit": "CPF inválido (dígito verificador incorreto)",
+            "success": "CPF válido"
+        },
+        "cnpj": {
+            "invalid_length": "CNPJ deve ter 14 dígitos",
+            "all_same_digits": "CNPJ não pode ter todos os dígitos iguais",
+            "invalid_check_digit": "CNPJ inválido (dígito verificador incorreto)",
+            "success": "CNPJ válido"
+        },
+        "document": {
+            "invalid_length": "Documento deve ter 11 dígitos (CPF) ou 14 dígitos (CNPJ)",
+            "success": "Documento válido"
+        },
+        "bank": {
+            "agency": {
+                "invalid_length": "Agência deve ter entre 4 e 10 dígitos",
+                "invalid_chars": "Agência deve conter apenas números",
+                "success": "Agência válida"
+            },
+            "account": {
+                "invalid_length": "Conta deve ter entre 5 e 20 dígitos",
+                "invalid_chars": "Conta deve conter apenas números e hífen",
+                "success": "Conta válida"
+            },
+            "digit": {
+                "invalid_length": "Dígito deve ter no máximo 2 dígitos",
+                "invalid_chars": "Dígito deve conter apenas números",
+                "success": "Dígito válido"
+            }
+        }
+    },
+    "errors": {
+        "required": "Campo obrigatório",
+        "invalid_type": "Tipo de dado inválido",
+        "invalid_format": "Formato inválido",
+        "unknown_error": "Erro desconhecido"
+    }
+} 

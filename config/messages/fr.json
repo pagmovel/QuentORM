@@ -1,0 +1,55 @@
+{
+    "validations": {
+        "phone": {
+            "valid": "Numéro de téléphone valide",
+            "invalid": "Numéro de téléphone invalide. Doit contenir 10 ou 11 chiffres"
+        },
+        "cep": {
+            "valid": "Code postal valide",
+            "invalid": "Code postal invalide. Doit contenir 8 chiffres"
+        },
+        "email": {
+            "valid": "Email valide",
+            "invalid": "Email invalide. Format incorrect"
+        },
+        "password": {
+            "valid": "Mot de passe valide",
+            "invalid": "Mot de passe invalide",
+            "length": "Le mot de passe doit contenir au moins 8 caractères",
+            "uppercase": "Le mot de passe doit contenir au moins une lettre majuscule",
+            "lowercase": "Le mot de passe doit contenir au moins une lettre minuscule",
+            "number": "Le mot de passe doit contenir au moins un chiffre",
+            "special": "Le mot de passe doit contenir au moins un caractère spécial"
+        },
+        "bank": {
+            "agency": {
+                "valid": "Agence valide",
+                "invalid": "Agence invalide. Doit contenir entre 4 et 10 chiffres"
+            },
+            "account": {
+                "valid": "Compte valide",
+                "invalid": "Compte invalide. Doit contenir entre 5 et 20 chiffres"
+            },
+            "digit": {
+                "valid": "Chiffre valide",
+                "invalid": "Chiffre invalide. Doit contenir maximum 2 chiffres"
+            }
+        },
+        "transaction": {
+            "value": {
+                "valid": "Valeur valide",
+                "invalid": "Valeur invalide. Doit être positive",
+                "zero": "La valeur ne peut pas être zéro"
+            },
+            "date": {
+                "valid": "Date valide",
+                "invalid": "Date invalide. Ne peut pas être dans le futur",
+                "format": "Format de date invalide"
+            },
+            "type": {
+                "valid": "Type valide",
+                "invalid": "Type invalide. Doit être 'entrée' ou 'sortie'"
+            }
+        }
+    }
+} 

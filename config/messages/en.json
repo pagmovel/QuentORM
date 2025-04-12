@@ -1,0 +1,55 @@
+{
+    "validations": {
+        "phone": {
+            "valid": "Valid phone number",
+            "invalid": "Invalid phone number. Must contain 10 or 11 digits"
+        },
+        "cep": {
+            "valid": "Valid postal code",
+            "invalid": "Invalid postal code. Must contain 8 digits"
+        },
+        "email": {
+            "valid": "Valid email",
+            "invalid": "Invalid email. Incorrect format"
+        },
+        "password": {
+            "valid": "Valid password",
+            "invalid": "Invalid password",
+            "length": "Password must contain at least 8 characters",
+            "uppercase": "Password must contain at least one uppercase letter",
+            "lowercase": "Password must contain at least one lowercase letter",
+            "number": "Password must contain at least one number",
+            "special": "Password must contain at least one special character"
+        },
+        "bank": {
+            "agency": {
+                "valid": "Valid agency",
+                "invalid": "Invalid agency. Must contain between 4 and 10 digits"
+            },
+            "account": {
+                "valid": "Valid account",
+                "invalid": "Invalid account. Must contain between 5 and 20 digits"
+            },
+            "digit": {
+                "valid": "Valid digit",
+                "invalid": "Invalid digit. Must contain maximum 2 digits"
+            }
+        },
+        "transaction": {
+            "value": {
+                "valid": "Valid value",
+                "invalid": "Invalid value. Must be positive",
+                "zero": "Value cannot be zero"
+            },
+            "date": {
+                "valid": "Valid date",
+                "invalid": "Invalid date. Cannot be in the future",
+                "format": "Invalid date format"
+            },
+            "type": {
+                "valid": "Valid type",
+                "invalid": "Invalid type. Must be 'input' or 'output'"
+            }
+        }
+    }
+} 

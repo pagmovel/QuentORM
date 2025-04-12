@@ -1,0 +1,102 @@
+{
+    "cli": {
+        "new": {
+            "welcome": "Bem-vindo ao assistente de criação de projetos PyQuent!",
+            "project_name": "Digite o nome do projeto:",
+            "invalid_name": "Nome do projeto inválido. Use apenas letras, números e hífen.",
+            "directory_exists": "O diretório já existe. Deseja sobrescrever? (S/n)",
+            "creating_structure": "Criando estrutura do projeto...",
+            "structure_created": "Estrutura criada com sucesso!",
+            "virtual_env": {
+                "question": "Deseja criar um ambiente virtual? (S/n)",
+                "creating": "Criando ambiente virtual...",
+                "created": "Ambiente virtual criado!",
+                "activate": "Deseja ativar o ambiente virtual? (S/n)",
+                "activating": "Ativando ambiente virtual...",
+                "activated": "Ambiente virtual ativado!"
+            },
+            "dependencies": {
+                "question": "Deseja instalar as dependências? (S/n)",
+                "installing": "Instalando dependências...",
+                "installed": "Dependências instaladas!"
+            },
+            "git": {
+                "question": "Deseja inicializar o Git? (S/n)",
+                "initializing": "Inicializando Git...",
+                "initialized": "Git inicializado!"
+            },
+            "success": "Projeto criado com sucesso!",
+            "next_steps": [
+                "1. Entre no diretório do projeto: cd nome-do-projeto",
+                "2. Configure o arquivo .env com suas credenciais",
+                "3. Execute as migrações: pyquent migrate",
+                "4. Inicie o desenvolvimento!"
+            ]
+        }
+    },
+    "validations": {
+        "cpf": {
+            "invalid_length": "CPF deve ter 11 dígitos",
+            "invalid_digits": "CPF não pode ter todos os dígitos iguais",
+            "invalid_check_digits": "Dígitos verificadores do CPF inválidos",
+            "success": "CPF válido"
+        },
+        "cnpj": {
+            "invalid_length": "CNPJ deve ter 14 dígitos",
+            "invalid_digits": "CNPJ não pode ter todos os dígitos iguais",
+            "invalid_check_digits": "Dígitos verificadores do CNPJ inválidos",
+            "success": "CNPJ válido"
+        },
+        "phone": {
+            "valid": "Telefone válido",
+            "invalid": "Telefone inválido. Deve conter 10 ou 11 dígitos"
+        },
+        "cep": {
+            "valid": "CEP válido",
+            "invalid": "CEP inválido. Deve conter 8 dígitos"
+        },
+        "email": {
+            "valid": "E-mail válido",
+            "invalid": "E-mail inválido. Formato incorreto"
+        },
+        "password": {
+            "valid": "Senha válida",
+            "invalid": "Senha inválida",
+            "length": "Senha deve ter no mínimo 8 caracteres",
+            "uppercase": "Senha deve conter pelo menos uma letra maiúscula",
+            "lowercase": "Senha deve conter pelo menos uma letra minúscula",
+            "number": "Senha deve conter pelo menos um número",
+            "special": "Senha deve conter pelo menos um caractere especial"
+        },
+        "bank": {
+            "agency": {
+                "valid": "Agência válida",
+                "invalid": "Agência inválida. Deve conter entre 4 e 10 dígitos"
+            },
+            "account": {
+                "valid": "Conta válida",
+                "invalid": "Conta inválida. Deve conter entre 5 e 20 dígitos"
+            },
+            "digit": {
+                "valid": "Dígito válido",
+                "invalid": "Dígito inválido. Deve conter no máximo 2 dígitos"
+            }
+        },
+        "transaction": {
+            "value": {
+                "valid": "Valor válido",
+                "invalid": "Valor inválido. Deve ser positivo",
+                "zero": "Valor não pode ser zero"
+            },
+            "date": {
+                "valid": "Data válida",
+                "invalid": "Data inválida. Não pode ser futura",
+                "format": "Data em formato inválido"
+            },
+            "type": {
+                "valid": "Tipo válido",
+                "invalid": "Tipo inválido. Deve ser 'entrada' ou 'saida'"
+            }
+        }
+    }
+} 

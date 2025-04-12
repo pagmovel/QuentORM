@@ -1,0 +1,55 @@
+{
+    "validations": {
+        "phone": {
+            "valid": "Teléfono válido",
+            "invalid": "Teléfono inválido. Debe contener 10 o 11 dígitos"
+        },
+        "cep": {
+            "valid": "Código postal válido",
+            "invalid": "Código postal inválido. Debe contener 8 dígitos"
+        },
+        "email": {
+            "valid": "Email válido",
+            "invalid": "Email inválido. Formato incorrecto"
+        },
+        "password": {
+            "valid": "Contraseña válida",
+            "invalid": "Contraseña inválida",
+            "length": "La contraseña debe contener al menos 8 caracteres",
+            "uppercase": "La contraseña debe contener al menos una letra mayúscula",
+            "lowercase": "La contraseña debe contener al menos una letra minúscula",
+            "number": "La contraseña debe contener al menos un número",
+            "special": "La contraseña debe contener al menos un carácter especial"
+        },
+        "bank": {
+            "agency": {
+                "valid": "Agencia válida",
+                "invalid": "Agencia inválida. Debe contener entre 4 y 10 dígitos"
+            },
+            "account": {
+                "valid": "Cuenta válida",
+                "invalid": "Cuenta inválida. Debe contener entre 5 y 20 dígitos"
+            },
+            "digit": {
+                "valid": "Dígito válido",
+                "invalid": "Dígito inválido. Debe contener máximo 2 dígitos"
+            }
+        },
+        "transaction": {
+            "value": {
+                "valid": "Valor válido",
+                "invalid": "Valor inválido. Debe ser positivo",
+                "zero": "El valor no puede ser cero"
+            },
+            "date": {
+                "valid": "Fecha válida",
+                "invalid": "Fecha inválida. No puede ser en el futuro",
+                "format": "Formato de fecha inválido"
+            },
+            "type": {
+                "valid": "Tipo válido",
+                "invalid": "Tipo inválido. Debe ser 'entrada' o 'salida'"
+            }
+        }
+    }
+} 
