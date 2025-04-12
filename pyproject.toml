@@ -3,11 +3,11 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "quentorm"
-version = "0.1.1"
-description = "ORM para Python com foco em produtividade e simplicidade"
+name = "financeiro"
+version = "0.1.0"
+description = "Sistema financeiro desenvolvido com QuentORM"
 authors = [
-    {name = "QuentORM Team", email = "quentorm@example.com"}
+    {name = "Financeiro Team", email = "financeiro@example.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.8"
