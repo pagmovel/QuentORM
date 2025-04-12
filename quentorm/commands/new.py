@@ -7,8 +7,8 @@ import click
 from pathlib import Path
 from ..utils.project import (
     create_project_structure,
-    create_virtualenv,
-    activate_virtualenv,
+    create_venv,
+    activate_venv,
     install_dependencies,
     create_config_files,
     create_gitignore,
@@ -28,12 +28,12 @@ def new_command(project_name):
     
     # Criar ambiente virtual
     if click.confirm("Deseja criar um ambiente virtual?", default=True):
-        create_virtualenv(project_name)
+        create_venv(project_name)
         click.echo("✓ Ambiente virtual criado com sucesso!")
         
         # Ativar ambiente virtual
         if click.confirm("Deseja ativar o ambiente virtual?", default=True):
-            activate_virtualenv(project_name)
+            activate_venv(project_name)
             click.echo("✓ Ambiente virtual ativado!")
             
             # Instalar dependências

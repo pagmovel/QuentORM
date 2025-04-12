@@ -6,8 +6,8 @@ from .models import BaseModel, Column, String, Integer, Float, Boolean, DateTime
 from .validators import validar_cpf, validar_cnpj, validar_cpf_cnpj, validar_agencia, validar_conta, validar_digito
 from .project import (
     create_project_structure,
-    create_virtualenv,
-    activate_virtualenv,
+    create_venv,
+    activate_venv,
     install_dependencies,
     create_config_files,
     create_gitignore,
@@ -31,8 +31,8 @@ __all__ = [
     'validar_conta',
     'validar_digito',
     'create_project_structure',
-    'create_virtualenv',
-    'activate_virtualenv',
+    'create_venv',
+    'activate_venv',
     'install_dependencies',
     'create_config_files',
     'create_gitignore',

@@ -3,6 +3,7 @@ Funções utilitárias para manipulação do projeto
 """
 
 import os
+import sys
 import subprocess
 from pathlib import Path
 
@@ -29,62 +30,61 @@ def create_project_structure(project_name):
             init_file = os.path.join(path, '__init__.py')
             Path(init_file).touch()
 
-def create_virtualenv(project_name):
-    """Cria um ambiente virtual para o projeto"""
+def create_venv(project_name):
+    """Cria o ambiente virtual"""
     try:
-        subprocess.run(['python', '-m', 'venv', os.path.join(project_name, 'venv')], check=True)
+        subprocess.run([sys.executable, '-m', 'venv', os.path.join(project_name, 'venv')], check=True)
         return True
     except subprocess.CalledProcessError:
         return False
 
-def activate_virtualenv(project_name):
+def activate_venv(project_name):
     """Ativa o ambiente virtual"""
-    if os.name == 'nt':  # Windows
+    if sys.platform == 'win32':
         activate_script = os.path.join(project_name, 'venv', 'Scripts', 'activate')
-    else:  # Unix/Linux
+        subprocess.run(['cmd', '/c', activate_script], shell=True)
+    else:
         activate_script = os.path.join(project_name, 'venv', 'bin', 'activate')
-    
-    try:
-        os.environ['VIRTUAL_ENV'] = os.path.join(os.getcwd(), project_name, 'venv')
-        os.environ['PATH'] = os.path.join(os.environ['VIRTUAL_ENV'], 'bin') + os.pathsep + os.environ['PATH']
-        return True
-    except Exception:
-        return False
+        subprocess.run(['source', activate_script], shell=True)
 
 def install_dependencies(project_name):
     """Instala as dependências do projeto"""
     try:
-        subprocess.run(['pip', 'install', 'quentorm'], check=True)
+        if sys.platform == 'win32':
+            pip = os.path.join(project_name, 'venv', 'Scripts', 'pip')
+        else:
+            pip = os.path.join(project_name, 'venv', 'bin', 'pip')
+        
+        subprocess.run([pip, 'install', '-r', os.path.join(project_name, 'requirements.txt')], check=True)
         return True
     except subprocess.CalledProcessError:
         return False
 
 def create_config_files(project_name):
-    """Cria os arquivos de configuração do projeto"""
-    try:
-        # Criar .env.example
-        env_example = os.path.join(project_name, '.env.example')
-        with open(env_example, 'w') as f:
-            f.write("""DB_CONNECTION=sqlite
+    """Cria os arquivos de configuração"""
+    # Criar .env.example
+    env_example = os.path.join(project_name, '.env.example')
+    with open(env_example, 'w') as f:
+        f.write("""DB_CONNECTION=sqlite
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=database.sqlite
 DB_USERNAME=root
 DB_PASSWORD=
 """)
-        
-        # Criar requirements.txt
-        requirements = os.path.join(project_name, 'requirements.txt')
-        with open(requirements, 'w') as f:
-            f.write("""quentorm>=1.0.0
+
+    # Criar requirements.txt
+    requirements = os.path.join(project_name, 'requirements.txt')
+    with open(requirements, 'w') as f:
+        f.write("""quentorm>=1.0.0
 python-dotenv>=0.19.0
 SQLAlchemy>=1.4.0
 """)
-        
-        # Criar README.md
-        readme = os.path.join(project_name, 'README.md')
-        with open(readme, 'w') as f:
-            f.write(f"""# {project_name}
+
+    # Criar README.md
+    readme = os.path.join(project_name, 'README.md')
+    with open(readme, 'w') as f:
+        f.write(f"""# {project_name}
 
 Projeto criado com QuentORM ORM.
 
@@ -106,16 +106,12 @@ Projeto criado com QuentORM ORM.
    quentorm migrate
    ```
 """)
-        return True
-    except Exception:
-        return False
 
 def create_gitignore(project_name):
     """Cria o arquivo .gitignore"""
-    try:
-        gitignore = os.path.join(project_name, '.gitignore')
-        with open(gitignore, 'w') as f:
-            f.write("""# Python
+    gitignore = os.path.join(project_name, '.gitignore')
+    with open(gitignore, 'w') as f:
+        f.write("""# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -154,14 +150,13 @@ ENV/
 *.sqlite
 *.db
 """)
-        return True
-    except Exception:
-        return False
 
 def init_git(project_name):
-    """Inicializa um repositório Git"""
+    """Inicializa o repositório Git"""
     try:
-        subprocess.run(['git', 'init'], cwd=project_name, check=True)
+        subprocess.run(['git', 'init', project_name], check=True)
+        subprocess.run(['git', 'add', '.'], cwd=project_name, check=True)
+        subprocess.run(['git', 'commit', '-m', 'Initial commit'], cwd=project_name, check=True)
         return True
     except subprocess.CalledProcessError:
         return False 
