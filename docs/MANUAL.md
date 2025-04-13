@@ -2,20 +2,20 @@
 
 ## 📋 Índice
 
-1. [Introdução](#introdução)
-2. [Instalação](#instalação)
-3. [Configuração do Ambiente](#configuração-do-ambiente)
-4. [Modelos e Migrações](#modelos-e-migrações)
-5. [Relacionamentos](#relacionamentos)
-6. [Consultas e Filtros](#consultas-e-filtros)
-7. [Validações](#validações)
-8. [Eventos e Hooks](#eventos-e-hooks)
-9. [CLI e Comandos](#cli-e-comandos)
-10. [Boas Práticas](#boas-práticas)
-11. [Exemplos Práticos](#exemplos-práticos)
-12. [Solução de Problemas](#solução-de-problemas)
-13. [Cache](#cache)
-14. [Logging](#logging)
+1. [Introdução](#1️⃣-introdução)
+2. [Instalação](#2️⃣-instalação)
+3. [Configuração do Ambiente](#3️⃣-configuração-do-ambiente)
+4. [Modelos e Migrações](#4️⃣-modelos-e-migrações)
+5. [Relacionamentos](#5️⃣-relacionamentos)
+6. [Consultas e Filtros](#6️⃣-consultas-e-filtros)
+7. [Validações](#7️⃣-validações)
+8. [Eventos](#8️⃣-eventos)
+9. [CLI e Comandos](#9️⃣-cli-e-comandos)
+10. [Boas Práticas](#1️⃣0️⃣-boas-práticas)
+11. [Exemplos Práticos](#1️⃣1️⃣-exemplos-práticos)
+12. [Solução de Problemas](#1️⃣2️⃣-solução-de-problemas)
+13. [Cache](#1️⃣3️⃣-cache)
+14. [Logging](#🔟-logging)
 
 ## 1️⃣ Introdução
 
@@ -82,9 +82,9 @@ config = Config()
 config.database = {
     'default': {
         'driver': 'pgsql',
-        'host': 'localhost',
+    'host': 'localhost',
         'port': 5432,
-        'database': 'meu_banco',
+    'database': 'meu_banco',
         'username': 'postgres',
         'password': 'senha123'
     }
@@ -810,7 +810,7 @@ class Product(Model):
         if self.stock >= quantity:
             self.stock -= quantity
             self.save()
-            return True
+        return True
         return False
     
     def increase_stock(self, quantity):
