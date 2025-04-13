@@ -50,12 +50,17 @@ def create_model(name):
     # Criar arquivo do modelo
     with open(model_path, 'w') as f:
         f.write(f"""from quentorm import Model, Column
+from sqlalchemy import Integer, String, DateTime, Boolean
 from datetime import datetime
 
 class {name}(Model):
     __tablename__ = '{name.lower()}s'
     
     id = Column(Integer, primary_key=True)
+    name = Column(String(100), nullable=False)
+    email = Column(String(255), nullable=False, unique=True)
+    password = Column(String(255), nullable=False)
+    active = Column(Boolean, default=True)
     created_at = Column(DateTime, default=datetime.now)
     updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
 """)
@@ -75,9 +80,13 @@ def create_migration(name):
 class Create{name}sTable(Migration):
     def up(self):
         self.create_table('{name.lower()}s', [
-            'id INTEGER PRIMARY KEY AUTOINCREMENT',
-            'created_at DATETIME',
-            'updated_at DATETIME'
+            'id SERIAL PRIMARY KEY',
+            'name VARCHAR(100) NOT NULL',
+            'email VARCHAR(255) NOT NULL UNIQUE',
+            'password VARCHAR(255) NOT NULL',
+            'active BOOLEAN DEFAULT TRUE',
+            'created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
+            'updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP'
         ])
 
     def down(self):
@@ -99,7 +108,12 @@ from app.models.{name.lower()} import {name}
 class {name}Seeder(Seeder):
     def run(self):
         # Adicione seus dados de seed aqui
-        pass
+        {name}.create({{
+            'name': 'Admin',
+            'email': 'admin@example.com',
+            'password': 'password123',
+            'active': True
+        }})
 """)
 
 def create_controller(name):

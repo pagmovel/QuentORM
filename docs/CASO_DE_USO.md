@@ -92,59 +92,59 @@ nome_do_projeto/
 ### 2.1 Comando Básico
 
 ```bash
-quentorm make:model NomeDoModelo
+quentorm make model Usuario
 ```
 
 ### 2.2 Opções Disponíveis
 
 ```bash
 # Criar modelo com migração
-quentorm make:model NomeDoModelo --migration
+quentorm make model Usuario --migration
 
 # Criar modelo com seeder
-quentorm make:model NomeDoModelo --seeder
+quentorm make model Usuario --seeder
 
 # Criar modelo com controller
-quentorm make:model NomeDoModelo --controller
+quentorm make model Usuario --controller
 
 # Criar modelo com todas as opções
-quentorm make:model NomeDoModelo --all
+quentorm make model Usuario --all
 ```
 
 ### 2.3 Exemplo: Criando um Modelo de Usuário
 
 ```bash
-quentorm make:model User --migration
+quentorm make model Usuario --migration
 ```
 
 Isso criará:
 
-1. **Modelo** (`app/models/user.py`):
+1. **Modelo** (`app/models/usuario.py`):
 ```python
 from quentorm import Model, Column
 
-class User(Model):
-    __tablename__ = 'users'
+class Usuario(Model):
+    __tablename__ = 'usuarios'
     
     id = Column(Integer, primary_key=True)
     created_at = Column(DateTime, default=datetime.now)
     updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
 ```
 
-2. **Migração** (`database/migrations/YYYYMMDDHHMMSS_create_users_table.py`):
+2. **Migração** (`database/migrations/YYYYMMDDHHMMSS_create_usuarios_table.py`):
 ```python
 from quentorm import Migration
 
-class CreateUsersTable(Migration):
+class CreateUsuariosTable(Migration):
     def up(self):
-        self.create_table('users', [
+        self.create_table('usuarios', [
             'id INTEGER PRIMARY KEY AUTOINCREMENT',
             'created_at DATETIME',
             'updated_at DATETIME'
         ])
 
     def down(self):
-        self.drop_table('users')
+        self.drop_table('usuarios')
 ```
 
 ## 3. Caso de Uso: Sistema Financeiro

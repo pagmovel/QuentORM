@@ -268,3 +268,8 @@ Usuario.observe(UsuarioObserver())
 - Use prepared statements
 - Implemente controle de acesso
 - Mantenha logs de alterações 
+
+quentorm make model NomeDoModelo
+quentorm make migration nome_da_migracao
+quentorm make seeder nome_do_seeder
+quentorm make validator nome_do_validator 
