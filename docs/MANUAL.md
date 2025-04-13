@@ -96,7 +96,8 @@ config.database = {
 ### Definindo um Modelo
 
 ```python
-from quentorm import BaseModel, Column, types
+from quentorm import BaseModel, Column, relationship
+from quentorm.types import Integer, String, DateTime, Boolean, Text
 
 class User(BaseModel):
     __tablename__ = 'users'
@@ -132,13 +133,14 @@ class CreateUsersTable(Migration):
 ### Um para Um
 
 ```python
-from quentorm import BaseModel, Column, types, relationship
+from quentorm import BaseModel, Column, relationship
+from quentorm.types import Integer, String, DateTime, Boolean, Text
 
 class User(BaseModel):
     __tablename__ = 'users'
     
-    id = Column(types.Integer, primary_key=True)
-    name = Column(types.String(100))
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100))
     
     # Relacionamento um-para-um
     profile = relationship('Profile', back_populates='user', uselist=False)
@@ -146,9 +148,27 @@ class User(BaseModel):
 class Profile(BaseModel):
     __tablename__ = 'profiles'
     
-    id = Column(types.Integer, primary_key=True)
-    user_id = Column(types.Integer, ForeignKey('users.id'))
-    bio = Column(types.Text)
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('users.id'))
+    bio = Column(Text)
+    
+    user = relationship('User', back_populates='profile')
+
+class User(BaseModel):
+    __tablename__ = 'users'
+    
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100))
+    
+    # Relacionamento um-para-um
+    profile = relationship('Profile', back_populates='user', uselist=False)
+
+class Profile(BaseModel):
+    __tablename__ = 'profiles'
+    
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('users.id'))
+    bio = Column(Text)
     
     user = relationship('User', back_populates='profile')
 ```
@@ -427,22 +447,22 @@ O QuentORM fornece uma interface de linha de comando (CLI) completa para gerenci
 
 ```bash
 # Criar uma nova migração
-quentorm make:migration <nome_da_migracao>
+quentorm make migration <nome_da_migracao>
 
 # Executar migrações pendentes
 quentorm migrate
 
 # Reverter a última migração
-quentorm migrate:rollback
+quentorm migrate rollback
 
 # Reverter todas as migrações
-quentorm migrate:reset
+quentorm migrate reset
 
 # Recriar o banco de dados (reset + migrate)
-quentorm migrate:refresh
+quentorm migrate refresh
 
 # Listar todas as migrações
-quentorm migrate:status
+quentorm migrate status
 ```
 
 Opções para migrações:
@@ -754,11 +774,14 @@ class PostTag(BaseModel):
     múltiplas tags e uma tag seja usada em múltiplos posts.
     """
     
-    orders = relationship('Order', back_populates='customer')
-    reviews = relationship('Review', back_populates='user')
+    __tablename__ = 'post_tags'
     
-    def __str__(self):
-        return self.name
+    post_id = Column(Integer, ForeignKey('posts.id'), primary_key=True)
+    tag_id = Column(Integer, ForeignKey('tags.id'), primary_key=True)
+    
+    # Relacionamentos
+    post = relationship('Post', back_populates='post_tags')
+    tag = relationship('Tag', back_populates='post_tags')
 
 class Category(Model):
     __tablename__ = 'categories'
@@ -1146,6 +1169,16 @@ class ProductImage(BaseModel):
 O modelo `Order` representa um pedido completo, com itens, status, endereço de entrega e pagamento. Cada pedido está associado a um cliente.
 
 ```python
+from enum import Enum
+
+class OrderStatus(Enum):
+    PENDING = 'pending'
+    PROCESSING = 'processing'
+    SHIPPED = 'shipped'
+    DELIVERED = 'delivered'
+    CANCELLED = 'cancelled'
+
+    
 class Order(BaseModel):
     """Modelo de pedido com itens e status."""
     
@@ -1638,7 +1671,12 @@ class User(BaseModel):
         return cls.group_by('role').count()
 ```
 
-O decorador `@cache_query` é específico para métodos que retornam consultas ao banco de dados.
+### Diferença entre @cache e @cache_query
+
+- `@cache`: Utilizado para armazenar em cache o resultado de qualquer método de instância. Ideal para dados que não mudam com frequência, como detalhes de produtos.
+
+- `@cache_query`: Específico para métodos de classe que retornam consultas ao banco de dados. Otimizado para armazenar resultados de consultas SQL complexas.
+
 
 ### Invalidação de Cache
 
