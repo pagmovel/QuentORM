@@ -15,7 +15,7 @@
 11. [Exemplos Práticos](#1️⃣1️⃣-exemplos-práticos)
 12. [Solução de Problemas](#1️⃣2️⃣-solução-de-problemas)
 13. [Cache](#1️⃣3️⃣-cache)
-14. [Logging](#🔟-logging)
+14. [Logging](#1️⃣4️⃣-logging) 
 
 ## 1️⃣ Introdução
 
@@ -1664,7 +1664,7 @@ O decorador `@invalidate_cache` pode receber:
 - Uma única chave de cache como string
 - Uma lista de chaves de cache para invalidar múltiplos caches de uma vez
 
-## 🔟 Logging
+## 1️⃣4️⃣ Logging
 
 O sistema de logging do QuentORM permite rastrear eventos e operações importantes na aplicação. Existem três níveis principais de logging:
 
